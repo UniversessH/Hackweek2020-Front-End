@@ -8,6 +8,10 @@ import Square from '@/views/main/square.vue'
 import Follow from '@/views/main/follow.vue'
 import backStage from '@/views/backStage/backStage.vue'
 import register from '@/views/register/register.vue'
+import Eat from '@/views/eat/eat.vue'
+import Publish from '@/views/publish/publish.vue'
+import List from '@/views/list/list.vue'
+import My from '@/views/my/my.vue'
 
 Vue.use(VueRouter)
 
@@ -58,6 +62,26 @@ const routes = [
     path: '/register',
     name: 'register',
     component: register
+  },
+  {
+    path: '/eat',
+    name: 'eat',
+    component: Eat
+  },
+  {
+    path: '/publish',
+    name: 'publish',
+    component: Publish
+  },
+  {
+    path: '/list',
+    name: 'list',
+    component: List
+  },
+  {
+    path: '/my',
+    name: 'my',
+    component: My
   }
 ]
 

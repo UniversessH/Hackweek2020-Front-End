@@ -10,7 +10,7 @@
     <van-icon class-prefix="my-icon" name="liebiao" />
     <van-tabbar-item icon="search" to="/eat">吃啥</van-tabbar-item>
     <van-tabbar-item icon="friends-o" to="/publish">发布</van-tabbar-item>
-    <van-tabbar-item icon="setting-o" to="/health">健康</van-tabbar-item>
+    <van-tabbar-item icon="setting-o" to="/list">排行</van-tabbar-item>
     <van-tabbar-item icon="setting-o" to="/my">我的</van-tabbar-item>
   </van-tabbar>
 </template>
