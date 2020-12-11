@@ -12,6 +12,7 @@ import Eat from '@/views/eat/eat.vue'
 import Publish from '@/views/publish/publish.vue'
 import List from '@/views/list/list.vue'
 import My from '@/views/my/my.vue'
+import Setting from '@/views/setting/setting.vue'
 
 Vue.use(VueRouter)
 
@@ -82,6 +83,11 @@ const routes = [
     path: '/my',
     name: 'my',
     component: My
+  },
+  {
+    path: '/setting',
+    name: 'setting',
+    component: Setting
   }
 ]
 

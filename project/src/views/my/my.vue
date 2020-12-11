@@ -1,9 +1,7 @@
 <!-- 我的页面 -->
 <template>
   <div>
-    <van-cell-group
-      border="true"
-    >
+    <van-cell-group>
       <van-cell
         title="单元格"
         value="内容"
@@ -19,9 +17,11 @@
         />
         <div slot="title">如爱消</div>
         <div slot="label">美食大玩家</div>
-        <van-button size="43rem">
-          <van-icon name="setting-o" />
-        </van-button>
+        <!-- <van-button size="43rem"> -->
+        <router-link to="/setting">
+          <van-icon name="setting-o" size="2rem"/>
+        <!-- </van-button> -->
+        </router-link>
       </van-cell>
       <van-grid>
         <van-grid-item>
