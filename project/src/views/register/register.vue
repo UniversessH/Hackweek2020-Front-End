@@ -1,78 +1,82 @@
 <template>
-  <div class="login-container">
-    <div class="login">
-      <img :src="imgSrc" class="login-head" />
-      <v-form class="login-fo" ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          rounded
-          v-model="username"
-          :counter="19"
-          label="输入账号(纯数字)"
-          solo
-          required
-        ></v-text-field>
-        <v-text-field
-          rounded
-          v-model="user.name"
-          :counter="8"
-          label="输入昵称(最多八字符)"
-          solo
-          required
-        ></v-text-field>
-        <v-text-field
-          rounded
-          v-model="user.password"
-          :type="'password'"
-          label="输入密码"
-          solo
-          required
-        ></v-text-field>
-        <v-row justify="center">
-          <v-dialog v-model="dialog" persistent max-width="290">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                :loading="loading"
-                :disabled="loading"
-                rounded
-                color="rgb(244,247,197)"
-                @click="
-                  onRegister();
-                  loader = 'loading';
-                "
-                class="mr-4 login-btn"
-                x-large
-              >
-                <span style="color: rgb(0, 0, 0)">注册</span>
-              </v-btn>
-            </template>
-            <v-card>
-              <v-card-title class="justify-center" style="font-size: 1.6rem">{{
-                message
-              }}</v-card-title>
-              <v-card-actions>
-                <v-container justify="center">
-                  <v-btn
-                    rounded
-                    color="rgb(244,247,197)"
-                    :style="{ left: '50%', transform: 'translateX(-50%)' }"
-                    @click="
-                      dialog = false;
-                      clear();
-                    "
-                  >
-                    <span style="color=rgb(0,0,0)">关闭</span>
-                  </v-btn>
-                </v-container>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-row>
-      </v-form>
+  <!--<img :src="imgSrc" class="login-head" />-->
+  <v-container>
+    <v-container class="px-8">
+      <img :src="imgSrc" class="login-head">
+    </v-container>
+    <v-form class="login-fo" ref="form" v-model="valid" lazy-validation>
+  
+      <v-text-field
+        rounded
+        v-model="username"
+        :counter="19"
+        label="输入账号(纯数字)"
+        solo
+        required
+      ></v-text-field>
+      <v-text-field
+        rounded
+        v-model="user.name"
+        :counter="8"
+        label="输入昵称(最多八字符)"
+        solo
+        required
+      ></v-text-field>
+      <v-text-field
+        rounded
+        v-model="user.password"
+        :type="'password'"
+        label="输入密码"
+        solo
+        required
+      ></v-text-field>
+      <v-row justify="center">
+        <v-dialog v-model="dialog" persistent max-width="290">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              :loading="loading"
+              :disabled="loading"
+              rounded
+              color="rgb(244,247,197)"
+              @click="
+                onRegister();
+                loader = 'loading';
+              "
+              class="mr-4 login-btn"
+              x-large
+            >
+              <span style="color: rgb(0, 0, 0)" class="text">注册</span>
+            </v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="justify-center" style="font-size: 0.3rem">{{
+              message
+            }}</v-card-title>
+            <v-card-actions>
+              <v-container justify="center">
+                <v-btn
+                  rounded
+                  color="rgb(244,247,197)"
+                  :style="{ left: '50%', transform: 'translateX(-50%)' }"
+                  @click="
+                    dialog = false;
+                    clear();
+                  "
+                >
+                  <span style="color=rgb(0,0,0)" class="text">关闭</span>
+                </v-btn>
+              </v-container>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </v-form>
+    <v-container class="my-6" style="text-align:center">
       <router-link :to="{ name: 'login' }">
         <span class="goLogin">返回登录</span>
       </router-link>
-    </div>
-  </div>
+    </v-container>
+  </v-container>
 </template>
 
 <script>
@@ -163,31 +167,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  .login {
-    text-align: center;
-  }
-  // 图片
   .login-head {
-    position: absolute;
     margin-top: 1%;
     display: block;
     margin: 0 auto;
-    width: 12rem;
-    position: absolute;
-    left: 50%;
-    margin-left: -6rem;
+    width: 50%;
   }
-  .login-fo {
+  /*.login-fo {
     margin-top: 8rem;
     padding: 5rem;
     min-width: 25rem;
@@ -195,10 +181,12 @@ export default {
   }
   .login-btn {
     color: white;
+  }*/
+  .text{
+    font-size: 0.3rem;
   }
   .goLogin {
     text-align: center;
     color: rgb(161, 194, 177);
   }
-}
 </style>

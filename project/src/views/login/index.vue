@@ -1,8 +1,9 @@
 <!-- 登录页面 -->
 <template>
-  <div class="login-container">
-    <div class="login">
-      <img :src="imgSrc" class="login-head" />
+ <v-container>
+    <v-container class="px-8">
+      <img :src="imgSrc" class="login-head">
+    </v-container>
       <v-form class="login-fo" ref="form" v-model="valid" lazy-validation>
         <v-text-field
           rounded
@@ -35,11 +36,11 @@
                 class="mr-4 login-btn"
                 x-large
               >
-                登录
+                <span class="text">登录</span>
               </v-btn>
             </template>
             <v-card>
-              <v-card-title class="justify-center" style="font-size:1.6rem">{{ message }}</v-card-title>
+              <v-card-title class="justify-center" style="font-size:0.3rem">{{ message }}</v-card-title>
               <v-card-actions>
                 <v-container justify="center">
                   <v-btn
@@ -52,7 +53,7 @@
                       changePage();
                     "
                   >
-                    <span style="color:#FFFFFF">关闭</span>
+                    <span style="color:#FFFFFF" class="text">关闭</span>
                   </v-btn>
                 </v-container>
               </v-card-actions>
@@ -60,14 +61,15 @@
           </v-dialog>
         </v-row>
       </v-form>
+      <v-container class="my-6" style="text-align:center">
       <router-link :to="{ name: 'register' }">
         <span class="forgotten">注册 / </span>
       </router-link>
       <router-link :to="{ name: 'layout' }">
         <span class="forgotten">忘记密码</span>
       </router-link>
-    </div>
-  </div>
+      </v-container>
+    </v-container>
 </template>
 
 <script>
@@ -86,7 +88,7 @@ export default {
       status: false,
       closeByAdmin: false,
       closeByUser: false,
-      message: "登陆成功 ᕕ(ᐛ)ᕗ",
+      message: "登录成功 ᕕ(ᐛ)ᕗ",
       dialog: false,
       loader: null,
       loading: false,
@@ -155,13 +157,13 @@ export default {
             console.log("success");
           } else {
             this.dialog = true;
-            this.message = "登陆失败 〒_〒";
+            this.message = "登录失败 〒_〒";
             console.log(response.data.msg);
           }
         })
         .catch((error) => {
           this.dialog = true;
-          this.message = "登陆失败 〒_〒";
+          this.message = "登录失败 〒_〒";
         });
     },
   },
@@ -183,8 +185,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login-container {
-  position: fixed;
+/*.login-container {
+  //position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -220,5 +222,18 @@ export default {
     text-align: center;
     color: #ea907a;
   }
+}*/
+.login-head {
+    margin-top: 1%;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+.text{
+  font-size: 0.3rem;
 }
+.forgotten {
+    text-align: center;
+    color: #ea907a;
+  }
 </style>

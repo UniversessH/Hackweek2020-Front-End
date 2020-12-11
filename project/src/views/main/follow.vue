@@ -2,6 +2,14 @@
 <template>
   <div>
     <!-- 顶部导航栏 -->
+    <van-image
+      fit="contain"
+      class="image"
+      round
+      width="3rem"
+      height="3rem"
+      :src="require('@/assets/logo.png')"
+    />
     <van-tabs v-model="active">
       <van-tab title="测评" name="test" to="/test"></van-tab>
       <van-tab title="广场" name="square" to="/square"></van-tab>
@@ -29,3 +37,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.image {
+  float: left;
+}
+</style>
