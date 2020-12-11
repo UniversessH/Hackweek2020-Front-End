@@ -7,7 +7,6 @@
       <van-tab title="广场" name="square" to="/square"></van-tab>
       <van-tab title="关注" name="follow" to="/follow"></van-tab>
     </van-tabs>
-    <h1>测评</h1>
     <app-down></app-down>
     <router-view />
   </div>
