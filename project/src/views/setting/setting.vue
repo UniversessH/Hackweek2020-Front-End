@@ -6,7 +6,6 @@
         title="设置"
         left-arrow
         @click-left="onClickLeft"
-        @click-right="onClickRight"
       />
       <van-cell is-link>
         <template #title>
