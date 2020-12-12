@@ -25,32 +25,32 @@ export default {
         {
           name: "test",
           title: "首页",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/主页无.png"),
+          active: require("@/assets/底部小图标/主页.png")
         },
         {
           name: "eat",
           title: "吃啥",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/吃无.svg"),
+          active: require("@/assets/底部小图标/吃.svg")
         },
         {
           name: "publish",
           title: "发布",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/发布.jpg"),
+          active: require("@/assets/底部小图标/发布.jpg")
         },
         {
           name: "list",
           title: "排行",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/排行无.png"),
+          active: require("@/assets/底部小图标/排行.png")
         },
         {
           name: "my",
           title: "我的",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/我的无.png"),
+          active: require("@/assets/底部小图标/我的.png")
         }
       ]
     };
