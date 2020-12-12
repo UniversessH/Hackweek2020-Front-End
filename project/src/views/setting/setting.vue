@@ -2,17 +2,12 @@
 <template>
   <div>
     <van-cell-group>
-      <van-cell>
-        <router-link to="/my">
-          <van-icon
-            name="arrow-left"
-            size="1.5rem"
-            color="black"
-            class="setting"
-          />
-        </router-link>
-        <span>设置</span>
-      </van-cell>
+      <van-nav-bar
+        title="设置"
+        left-arrow
+        @click-left="onClickLeft"
+        @click-right="onClickRight"
+      />
       <van-cell is-link>
         <template #title>
           <span class="custom-title">问题反馈</span>
@@ -38,7 +33,11 @@
 </template>
 <script>
 export default {
-    
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1)
+    },
+  }
 }
 </script>
 <style scoped>

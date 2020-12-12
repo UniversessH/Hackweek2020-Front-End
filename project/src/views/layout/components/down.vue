@@ -31,8 +31,8 @@ export default {
         {
           name: "eat",
           title: "吃啥",
-          normal: require("@/assets/底部小图标/吃无.svg"),
-          active: require("@/assets/底部小图标/吃.svg")
+          normal: require("@/assets/底部小图标/吃无.png"),
+          active: require("@/assets/底部小图标/吃.png")
         },
         {
           name: "publish",

@@ -18,6 +18,7 @@
           :key="index"
           title="小黑"
           desc="一食堂水饺"
+          class="card1"
           :thumb="require('@/assets/头像/3.jpg')"
         >
           <template #tags>
@@ -58,5 +59,11 @@ export default {
 <style scoped>
 .image {
   float: left
+}
+.card1 .van-image{
+  height: 4.5rem !important;
+  border-radius: 50%;
+  width: 4.5rem !important;
+  overflow: hidden;
 }
 </style>

@@ -14,15 +14,28 @@
       <van-tab title="测评" name="test" to="/test"></van-tab>
       <van-tab title="广场" name="square" to="/square"></van-tab>
       <van-tab title="关注" name="follow" to="/follow">
-        <van-tabs>
-          <van-tab v-for="index in 8" :title="'标签 ' + index">
-            内容 {{ index }}
+        <van-tabs color="white">
+          <van-tab v-for="index in 8" :title="'小家园' + index">
+            <!-- 内容 {{ index }} -->
           </van-tab>
-          <van-skeleton
-            title avatar :row="3">
-            <div>实际内容</div>
-          </van-skeleton>
         </van-tabs>
+         <van-card
+          v-for="index in 2"
+          :key="index"
+          title="小红"
+          desc="九食堂面行人"
+          class="card1"
+          :thumb="require('@/assets/头像/4.jpg')"
+        >
+          <template #tags>
+            <br>
+            <p>美好的一天从干饭开始</p>
+          </template>
+          <template #footer>
+            <van-button size="mini">按钮</van-button>
+            <van-button size="mini">按钮</van-button>
+          </template>
+        </van-card>
       </van-tab>
     </van-tabs>
     <app-down></app-down>
@@ -50,5 +63,11 @@ export default {
 <style scoped>
 .image {
   float: left;
+}
+.card1 .van-image{
+  height: 4.5rem !important;
+  border-radius: 50%;
+  width: 4.5rem !important;
+  overflow: hidden;
 }
 </style>
