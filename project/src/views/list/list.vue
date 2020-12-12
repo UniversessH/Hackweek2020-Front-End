@@ -43,7 +43,7 @@ export default {
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       setTimeout(() => {
         for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
+          this.list.push(this.list.length + 4);
         }
 
         // 加载状态结束
