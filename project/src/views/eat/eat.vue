@@ -1,4 +1,3 @@
-<!-- 吃啥页面 -->
 <template>
   <div>
     <van-nav-bar
@@ -10,18 +9,36 @@
         slot="title"
         round
       >
-      <van-icon name="search" />
+        <van-icon name="search" />
       </van-button>
     </van-nav-bar>
+    <van-sidebar v-model="activeKey" @change="onChange">
+      <van-sidebar-item title="一食堂" />
+      <van-sidebar-item title="二食堂" />
+      <van-sidebar-item title="三食堂" />
+      <van-sidebar-item title="四食堂" />
+      <van-sidebar-item title="五食堂" />
+      <van-sidebar-item title="六食堂" />
+      <van-sidebar-item title="七食堂" />
+      <van-sidebar-item title="八食堂" />
+      <van-sidebar-item title="九食堂" />
+    </van-sidebar>
   </div>
 </template>
-
 <script>
-export default {
+  export default {
+  data() {
+    return {
+      activeKey: 0
+    };
+  },
   methods: {
+    onChange(index) {
+
+    },
     onClickLeft() {
       this.$router.go(-1)
-    },
+    }
   }
 }
 </script>
