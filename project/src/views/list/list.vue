@@ -22,10 +22,8 @@
       <van-cell v-for="(item,index) in list" :key="item" class="all">
         <span class="num">{{index+4}}</span>
         <span class="name">{{item.name}}</span>
-        <span>-----</span>
-        <span class="score">{{item.score}}分</span>
-        <span>---</span>
         <van-icon :name="item.icon" class="icon"/>
+        <span class="score">{{item.score}}分</span>
       </van-cell>
     </van-list>
   </div>
@@ -128,10 +126,10 @@ export default {
 .num{
   background-color:  #f4f7c5;
 }
-.name{
-  text-align: right;
-}
 .score{
-  align-items: right;
+  float: right;
+}
+.icon{
+  float: right;
 }
 </style>
