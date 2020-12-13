@@ -20,7 +20,6 @@
           </van-tab>
         </van-tabs>
          <van-card
-          :key="index"
           title="小红"
           desc="九食堂面行人"
           class="card1"
@@ -36,7 +35,6 @@
           </template>
         </van-card>
         <van-card
-          :key="index"
           title="资深熬夜党"
           desc="七食堂黄焖鸡米饭"
           class="card1"

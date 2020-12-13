@@ -15,7 +15,6 @@
       <van-tab title="广场" name="square" to="/square">
         <!-- 广场主页 -->
         <van-card
-          :key="index"
           title="略略略"
           desc="22：50 季季红火锅"
           class="card1"
@@ -27,13 +26,12 @@
           </template>
           <template #footer>
             <van-grid :column-num="2" icon-size="0.8rem">
-              <van-grid-item class="grid-height" :key="value" :icon="require('@/assets/点赞/点赞1.jpg')"/>
-              <van-grid-item class="grid-height" :key="value" :icon="require('@/assets/点赞/点赞2.jpg')"/>
+              <van-grid-item class="grid-height" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+              <van-grid-item class="grid-height" :icon="require('@/assets/点赞/点赞2.jpg')"/>
             </van-grid>
           </template>
         </van-card>
         <van-card
-          :key="index"
           title="啦啦啦"
           desc="18：45 杨国福麻辣烫"
           class="card1"
@@ -45,8 +43,8 @@
           </template>
           <template #footer>
             <van-grid :column-num="2" icon-size="0.8rem">
-              <van-grid-item class="grid-height" :key="value" :icon="require('@/assets/点赞/点赞1.jpg')"/>
-              <van-grid-item class="grid-height" :key="value" :icon="require('@/assets/点赞/点赞2.jpg')"/>
+              <van-grid-item class="grid-height" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+              <van-grid-item class="grid-height" :icon="require('@/assets/点赞/点赞2.jpg')"/>
             </van-grid>
           </template>
         </van-card>

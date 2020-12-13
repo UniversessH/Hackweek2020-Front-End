@@ -14,7 +14,6 @@
       <van-tab title="测评" name="test" to="/test">
         <!-- 测评主页 -->
         <van-card
-          :key="index"
           title="小黑"
           desc="一食堂水饺"
           class="card1"
@@ -30,7 +29,6 @@
           </template>
         </van-card>
         <van-card
-          :key="index"
           title="大明"
           desc="九食堂二楼铁板烧"
           class="card1"
