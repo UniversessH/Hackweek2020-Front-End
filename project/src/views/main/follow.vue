@@ -20,7 +20,6 @@
           </van-tab>
         </van-tabs>
          <van-card
-          v-for="index in 2"
           :key="index"
           title="小红"
           desc="九食堂面行人"
@@ -32,8 +31,24 @@
             <p>美好的一天从干饭开始</p>
           </template>
           <template #footer>
-            <van-button size="mini">按钮</van-button>
-            <van-button size="mini">按钮</van-button>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞2.jpg')"/>
+          </template>
+        </van-card>
+        <van-card
+          :key="index"
+          title="资深熬夜党"
+          desc="七食堂黄焖鸡米饭"
+          class="card1"
+          :thumb="require('@/assets/头像/7.jpg')"
+        >
+          <template #tags>
+            <br>
+            <p>让我康康是谁这么晚还在干饭呐？嗷，原来是我。</p>
+          </template>
+          <template #footer>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞2.jpg')"/>
           </template>
         </van-card>
       </van-tab>
@@ -69,5 +84,8 @@ export default {
   border-radius: 50%;
   width: 4.5rem !important;
   overflow: hidden;
+}
+.btn{
+  border: none;
 }
 </style>

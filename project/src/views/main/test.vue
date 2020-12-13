@@ -14,7 +14,6 @@
       <van-tab title="测评" name="test" to="/test">
         <!-- 测评主页 -->
         <van-card
-          v-for="index in 2"
           :key="index"
           title="小黑"
           desc="一食堂水饺"
@@ -26,8 +25,24 @@
             <p>可自己调酱料，可自己选水饺，也可小笼包等等，味道好评！绝不会踩雷！</p>
           </template>
           <template #footer>
-            <van-button size="mini">按钮</van-button>
-            <van-button size="mini">按钮</van-button>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞2.jpg')"/>
+          </template>
+        </van-card>
+        <van-card
+          :key="index"
+          title="大明"
+          desc="九食堂二楼铁板烧"
+          class="card1"
+          :thumb="require('@/assets/头像/1.jpg')"
+        >
+          <template #tags>
+            <br>
+            <p>蒜蓉锅底值得一尝！</p>
+          </template>
+          <template #footer>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞1.jpg')"/>
+            <van-button class="btn" size="mini" :icon="require('@/assets/点赞/点赞2.jpg')"/>
           </template>
         </van-card>
       </van-tab>
@@ -65,5 +80,8 @@ export default {
   border-radius: 50%;
   width: 4.5rem !important;
   overflow: hidden;
+}
+.btn{
+  border: none;
 }
 </style>
