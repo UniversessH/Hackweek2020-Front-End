@@ -79,9 +79,10 @@ export default {
         let formData = new FormData();
         for(let file in this.files){
           formData.append("files", file, file.name)
+          alert(formData.append("files", file, file.name))
         }
-        //console.log(formData.getAll("cave"))
-        //console.log(this.files)
+        console.log(formData.getAll("cave"))
+        console.log(this.files)
         axios.post('/api/upload/1', formData
         ).then( response => {
           return response.data.id
