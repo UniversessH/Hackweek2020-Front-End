@@ -2,19 +2,20 @@
 <template>
   <van-tabbar v-model="active" class="active_tab">
     <van-tabbar-item
-      v-for="(item,index) in tabbars"
+      v-for="(item, index) in tabbars"
       :key="index"
-      @click="tab(index,item.name)"
+      @click="tab(index, item.name)"
     >
-      <span :class="currIndex == index ? active:''">{{item.title}}</span>
+      <span :class="currIndex === index ? active : ''">{{ item.title }}</span>
       <template slot="icon" slot-scope="props">
-        <img :src="props.active ? item.active : item.normal">
+        <img :src="props.active ? item.active : item.normal" />
       </template>
     </van-tabbar-item>
   </van-tabbar>
 </template>
 
 <script>
+import {Toast} from 'vant'
 export default {
   name: "AppDown",
   data() {
@@ -25,42 +26,46 @@ export default {
         {
           name: "test",
           title: "首页",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/主页无.png"),
+          active: require("@/assets/底部小图标/主页.png"),
         },
         {
           name: "eat",
           title: "吃啥",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/吃无.png"),
+          active: require("@/assets/底部小图标/吃.png"),
         },
         {
           name: "publish",
           title: "发布",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/发布.jpg"),
+          active: require("@/assets/底部小图标/发布.jpg"),
         },
         {
           name: "list",
           title: "排行",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
+          normal: require("@/assets/底部小图标/排行无.png"),
+          active: require("@/assets/底部小图标/排行.png"),
         },
         {
           name: "my",
           title: "我的",
-          normal: require("@/assets/头像/2.jpeg"),
-          active: require("@/assets/头像/4.jpg")
-        }
-      ]
+          normal: require("@/assets/底部小图标/我的无.png"),
+          active: require("@/assets/底部小图标/我的.png"),
+        },
+      ],
     };
   },
   methods: {
     tab(index, val) {
       this.currIndex = index;
+      if(val==="publish"){
+        Toast('研发小哥哥/小姐姐正在努力开发此功能中！')
+      }else{
       this.$router.push(val);
-    }
-  }
+      }
+    },
+  },
 };
 </script>
 
@@ -71,9 +76,10 @@ export default {
 }
 
 .van-tabbar-item--active {
-  color: #e10f02;
+  color: rgb(243,195,133);
 }
 </style>
+
 
 <!-- 主页底部栏 -->
 <!-- <template>

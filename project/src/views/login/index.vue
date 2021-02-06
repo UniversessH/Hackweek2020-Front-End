@@ -1,78 +1,82 @@
 <!-- 登录页面 -->
 <template>
- <v-container>
+  <v-container>
     <v-container class="px-8">
-      <img :src="imgSrc" class="login-head">
+      <img :src="imgSrc" class="login-head" />
     </v-container>
-      <v-form class="login-fo" ref="form" v-model="valid" lazy-validation>
-        <v-text-field
-          rounded
-          v-model="user.username"
-          :counter="19"
-          label="账号"
-          solo
-          required
-        ></v-text-field>
-        <v-text-field
-          rounded
-          v-model="user.password"
-          :type="'password'"
-          label="密码"
-          solo
-          required
-        ></v-text-field>
-        <v-row justify="center">
-          <v-dialog v-model="dialog" persistent max-width="290">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                :loading="loading"
-                :disabled="loading"
-                rounded
-                color="#ea907a"
-                @click="
-                  onLogin();
-                  loader = 'loading';
-                "
-                class="mr-4 login-btn"
-                x-large
-              >
-                <span class="text">登录</span>
-              </v-btn>
-            </template>
-            <v-card>
-              <v-card-title class="justify-center" style="font-size:0.3rem">{{ message }}</v-card-title>
-              <v-card-actions>
-                <v-container justify="center">
-                  <v-btn
-                    rounded
-                    color="#ea907a"
-                    :style="{ left: '50%', transform: 'translateX(-50%)' }"
-                    @click="
-                      dialog = false;
-                      clear();
-                      changePage();
-                    "
-                  >
-                    <span style="color:#FFFFFF" class="text">关闭</span>
-                  </v-btn>
-                </v-container>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-row>
-      </v-form>
-      <v-container class="my-6" style="text-align:center">
+    <v-form class="login-fo" ref="form" v-model="valid" lazy-validation>
+      <v-text-field
+        rounded
+        v-model="user.username"
+        :counter="19"
+        label="账号"
+        solo
+        required
+      ></v-text-field>
+      <v-text-field
+        rounded
+        v-model="user.password"
+        :type="'password'"
+        label="密码"
+        solo
+        required
+      ></v-text-field>
+      <v-row justify="center">
+        <v-dialog v-model="dialog" persistent max-width="290">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              :loading="loading"
+              :disabled="loading"
+              rounded
+              color="#ea907a"
+              @click="
+                onLogin();
+                loader = 'loading';
+              "
+              class="mr-4 login-btn"
+              x-large
+            >
+              <span class="text">登录</span>
+            </v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="justify-center" style="font-size: 0.3rem">{{
+              message
+            }}</v-card-title>
+            <v-card-actions>
+              <v-container justify="center">
+                <v-btn
+                  rounded
+                  color="#ea907a"
+                  :style="{ left: '50%', transform: 'translateX(-50%)' }"
+                  @click="
+                    dialog = false;
+                    clear();
+                    changePage();
+                  "
+                >
+                  <span style="color: #ffffff" class="text">关闭</span>
+                </v-btn>
+              </v-container>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </v-form>
+    <v-container class="my-6" style="text-align: center">
       <router-link :to="{ name: 'register' }">
         <span class="forgotten">注册 / </span>
       </router-link>
-      <router-link :to="{ name: 'layout' }">
+      <a @click="sorry">
         <span class="forgotten">忘记密码</span>
-      </router-link>
-      </v-container>
+      </a>
     </v-container>
+  </v-container>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+import { Toast } from "vant";
 import imgUrl from "@/assets/logo.png";
 import axios from "axios";
 import md5 from "js-md5";
@@ -94,7 +98,7 @@ export default {
       loading: false,
       valid: true,
       user: {
-        role: "admin",
+        role: "user",
         username: "",
         password: "",
         salt: Math.floor(Date.now() / 1000),
@@ -110,6 +114,9 @@ export default {
     };
   },
   methods: {
+    sorry() {
+      Toast("研发小哥哥/小姐姐正在努力开发此功能中！");
+    },
     changePage() {
       if (this.user.role === "user" && this.status === true) {
         this.closeByUser = true;
@@ -134,37 +141,42 @@ export default {
       user.salt = Math.floor(Date.now() / 1000);
       user.signkey = this.signkey(user);
       if (this.$route.query.role === "admin") user.role = "admin"; //隐式角色切换
-      axios.defaults.baseURL = "https://hackweek.multmax.top";
-      this.$axios({
-        method: "post",
-        url: "/api/login",
-        data: user,
-        transformRequest: [
-          function (data) {
-            return qs.stringify(data);
+      if (user.username === "" || user.password === "") {
+        this.dialog = true;
+        this.message = "请输入账号/密码~";
+      } else {
+        axios.defaults.baseURL = "https://hackweek.multmax.top";
+        this.$axios({
+          method: "post",
+          url: "/api/login",
+          data: user,
+          transformRequest: [
+            function (data) {
+              return qs.stringify(data);
+            },
+          ],
+          header: {
+            "Content-type": "application/x-www-form-urlencoded",
           },
-        ],
-        header: {
-          "Content-type": "application/x-www-form-urlencoded",
-        },
-      })
-        .then((response) => {
-          //登陆成功
-          this.message = "登录成功 ᕕ(ᐛ)ᕗ";
-          this.dialog = true;
-          if (response.data.status === "success") {
-            this.status = true;
-            console.log("success");
-          } else {
+        })
+          .then((response) => {
+            //登陆成功
+            this.message = "登录成功 ᕕ(ᐛ)ᕗ";
+            this.dialog = true;
+            if (response.data.status === "success") {
+              this.status = true;
+              console.log("success");
+            } else {
+              this.dialog = true;
+              this.message = "登录失败 〒_〒";
+              console.log(response.data.msg);
+            }
+          })
+          .catch((error) => {
             this.dialog = true;
             this.message = "登录失败 〒_〒";
-            console.log(response.data.msg);
-          }
-        })
-        .catch((error) => {
-          this.dialog = true;
-          this.message = "登录失败 〒_〒";
-        });
+          });
+      }
     },
   },
   watch: {
@@ -185,55 +197,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/*.login-container {
-  //position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  .login {
-    text-align: center;
-  }
-  // 图片
-  .login-head {
-    position: absolute;
-    margin-top: 1%;
-    display: block;
-    margin: 0 auto;
-    width: 12rem;
-    position: absolute;
-    left: 50%;
-    margin-left: -6rem;
-  }
-  .login-fo {
-    margin-top: 8rem;
-    padding: 5rem;
-    min-width: 25rem;
-    border-radius: 20%;
-  }
-  .login-btn {
-    color: white;
-  }
-  .forgotten {
-    text-align: center;
-    color: #ea907a;
-  }
-}*/
 .login-head {
-    margin-top: 1%;
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-  }
-.text{
+  margin-top: 1%;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+.text {
   font-size: 0.3rem;
 }
 .forgotten {
-    text-align: center;
-    color: #ea907a;
-  }
+  text-align: center;
+  color: #ea907a;
+}
 </style>

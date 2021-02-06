@@ -13,6 +13,10 @@ import Publish from '@/views/publish/publish.vue'
 import List from '@/views/list/list.vue'
 import My from '@/views/my/my.vue'
 import Setting from '@/views/setting/setting.vue'
+import aboutUs from '@/views/aboutUs/aboutUs.vue'
+//import { toPrecision } from 'core-js/fn/number/epsilon'
+//import { nextTick } from 'vue/types/umd'
+//import { toPrecision } from 'core-js/fn/number/epsilon'
 
 Vue.use(VueRouter)
 
@@ -88,6 +92,11 @@ const routes = [
     path: '/setting',
     name: 'setting',
     component: Setting
+  },
+  {
+    path:'/aboutus',
+    name: 'aboutus',
+    component: aboutUs
   }
 ]
 
@@ -95,4 +104,25 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login'){
+    next();
+  } else {
+    let token
+    let strCookie = document.cookie;
+    let arrCookie = strCookie.split("; ");
+    for ( let i = 0; i<arrCookie.length; i++){
+      let arr = arrCookie[i].split("=");
+      if (arr[0] === "token"){
+        token = arr[1];
+      }
+    }
+    if (token === null || token === '' ){
+      next('/login');
+    }else{
+      next();
+    }
+  }
+})
 export default router
+

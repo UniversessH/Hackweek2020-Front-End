@@ -2,25 +2,21 @@
 <template>
   <div>
     <van-cell-group>
-      <van-cell
-        title="单元格"
-        value="内容"
-        center
-      >
+      <van-cell title="单元格" value="内容" center>
         <van-image
           slot="icon"
-          width="3rem"
-          height="3rem"
+          width="1rem"
+          height="1rem"
           fit="cover"
           round
           :src="require('@/assets/头像/4.jpg')"
         />
-        <div slot="title">如爱消</div>
+        <div slot="title">{{ name }}</div>
         <div slot="label">美食大玩家</div>
         <!-- <van-button size="43rem"> -->
         <router-link to="/setting">
-          <van-icon name="setting-o" size="2rem"/>
-        <!-- </van-button> -->
+          <van-icon name="setting-o" color="rgb(243,195,133)" />
+          <!-- </van-button> -->
         </router-link>
       </van-cell>
       <van-grid>
@@ -50,10 +46,27 @@
         </van-grid-item>
       </van-grid>
     </van-cell-group>
-    <van-tabs v-model="active" animated>
-      <van-tab title="勋章墙" name="test"></van-tab>
-      <van-tab title="创作中心" name="square"></van-tab>
-      <van-tab title="照片墙" name="follow"></van-tab>
+    <van-tabs
+      v-model="active"
+      animated
+      title-active-color="rgb(243,195,133)"
+      color="rgb(243,195,133)"
+    >
+      <van-tab title="勋章墙" name="test">
+        <div class="textField">
+          <span style="color: #cccccc">coming s∞n...</span>
+        </div>
+      </van-tab>
+      <van-tab title="创作中心" name="square">
+        <div class="textField">
+          <span style="color: #cccccc">coming s∞n...</span>
+        </div>
+      </van-tab>
+      <van-tab title="照片墙" name="follow">
+        <div class="textField">
+          <span style="color: #cccccc">coming s∞n...</span>
+        </div>
+      </van-tab>
     </van-tabs>
     <app-down></app-down>
     <router-view />
@@ -61,22 +74,25 @@
 </template>
 
 <script>
-import AppDown from '../layout/components/down'
+import AppDown from "../layout/components/down";
 export default {
   components: {
-    AppDown
+    AppDown,
   },
-  data () {
+  data() {
     return {
-      active: 0
-    }
+      name: "如爱消",
+      active: 0,
+    };
   },
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 <style scoped>
+.textField {
+  margin: 25% auto;
+  text-align: center;
+}
 .num {
   font-size: 15px;
   text-align: center;
